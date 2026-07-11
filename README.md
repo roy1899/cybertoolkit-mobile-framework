@@ -41,11 +41,28 @@ l'opérateur.
 ## Installation (Termux)
 
 ```bash
+# Si c'est la première utilisation de Termux, choisis un mirroir de
+# paquets (évite l'avertissement "No mirror or mirror group selected")
+termux-change-repo
+
+pkg update -y
 pkg install python iproute2 nmap curl jq git termux-api
+
+# Nécessaire pour que le module reporting puisse copier des fichiers
+# vers un dossier accessible par les autres apps Android, et pour que
+# certaines commandes Termux:API fonctionnent correctement
+termux-setup-storage
+
 git clone https://github.com/roy1899/cybertoolkit-mobile-framework.git
 cd cybertoolkit-mobile-framework
 pip install -r requirements.txt
 ```
+
+**Termux:API nécessite aussi une app Android séparée**, en plus du
+paquet `pkg install termux-api` : installe **Termux:API** depuis
+[F-Droid](https://f-droid.org/packages/com.termux.api/) (pas le Play
+Store, la version Termux qui y est publiée n'est plus maintenue). Sans
+cette app, les commandes `termux-*` échouent silencieusement.
 
 ## Usage
 
@@ -119,6 +136,50 @@ explicite (voir `docs/adr/ADR-0002-active-probe-scope-enforcement.md`).
 pip install -r requirements.txt
 python3 -m pytest
 ```
+
+## Dépannage
+
+Problèmes réellement rencontrés en développant ce projet sur appareil
+réel, avec leur solution.
+
+**`No mirror or mirror group selected`** au premier `pkg install` :
+```bash
+termux-change-repo
+```
+puis choisis n'importe quel mirroir dans la liste proposée.
+
+**`context_detector` ou `host_discovery` retournent des champs vides ou
+`"unknown"`, même avec `iproute2` installé** : c'est attendu sur la
+plupart des Android non-rootés — le noyau bloque l'accès direct
+(`netlink`) aux commandes réseau pour les apps non privilégiées.
+`context_detector` a un repli automatique via Termux:API (voir plus
+bas) ; `host_discovery` n'en a pas et le dit explicitement dans le champ
+`note` de sa réponse. Voir `docs/adr/ADR-0001-engine-policy-separation.md`
+et les `SPEC.md` des modules concernés pour le détail.
+
+**`wifi_scan` retourne une erreur mentionnant la localisation** : Android
+exige que le service de localisation soit activé pour renvoyer la liste
+des réseaux Wi-Fi visibles (restriction du système, pas du framework).
+Active la localisation dans les paramètres Android, puis réessaie.
+
+**Les commandes `termux-*` ne renvoient rien ou échouent silencieusement**
+: vérifie que l'app **Termux:API** (pas juste le paquet) est bien
+installée depuis F-Droid, et qu'elle a les permissions nécessaires
+(localisation notamment) dans les paramètres Android de l'app.
+
+**`ctk run <module>` renvoie `"status": "denied"`** : c'est le
+comportement attendu si tu n'as pas précisé de profil (le profil `safe`
+par défaut ne permet aucune action active), ou si la cible n'est pas
+dans le scope autorisé du profil choisi. Voir la table des profils dans
+`docs/ARCHITECTURE.md`. Pour confirmer une cible ponctuelle :
+```bash
+ctk --profile authorized_client --authorize <cible> run <module> --target <cible>
+```
+
+**Tu veux faire tourner un outil sans binaire natif Android (ex: Claude
+Code) en Termux** : voir `docs/TERMUX_DEV_ENVIRONMENT.md`, qui documente
+la mise en place d'un environnement Ubuntu complet via `proot-distro` et
+les pièges rencontrés en pratique.
 
 ## Documentation
 

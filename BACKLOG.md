@@ -82,9 +82,18 @@ Statut : `done` / `next` / `planned`.
 ## Qualité / process
 - [done] Suite de tests pytest dès la V0.1 (moteur de politique, client de
   politique, 2 modules de référence)
+- [done] Validation de `port_scanner` sur appareil réel (2026-07-11)
+- [done] README : étapes d'installation complètes + section Dépannage
+- [next] Test d'installation "à froid" (README suivi du début à la fin
+  sur un Termux fraîchement installé, sans aucune commande tapée en
+  amont) — vérifier qu'aucune étape implicite n'a été oubliée
+- [next] Validation sur un second appareil Android (fabricant/version
+  différents du device de développement actuel) pour confirmer que les
+  comportements observés (noms de champs Termux:API, restrictions
+  netlink...) ne sont pas spécifiques à un seul device
 - [next] CI minimale (lint + tests) — à définir selon ce que Termux/GitHub
   Actions permettent réellement d'exécuter
 - [planned] Script d'installation Termux (`scripts/install_termux.sh`) qui
-  vérifie/installe `iproute2`, `nmap`, `curl`, `jq`, `python`
+  vérifie/installe `iproute2`, `nmap`, `curl`, `jq`, `python`, `termux-api`
 - [planned] Guide "Getting started" orienté terrain (utilisateur terrain) séparé
   de la documentation orientée architecture (contributeurs)

@@ -1,8 +1,9 @@
 # Project Status
 
-**Version** : 0.9
+**Version** : 1.0.3
 **Statut** : Fondations et modules core livrés, testés (77 tests), et
-validés sur appareil réel (Android/Termux).
+validés sur appareil réel (Android/Termux). `port_scanner` (module
+actif) validé sur appareil réel le 2026-07-11.
 
 ## Résumé
 
@@ -17,14 +18,14 @@ le détail.
 |---|---|
 | `engine/policy/` (PolicyEngine, 6 profils) | ✅ |
 | `engine/core/` (Module, PolicyClient, registry, session log) | ✅ |
-| `engine/modules/context_detector/` (contexte réseau, portail captif) | ✅ |
-| `engine/modules/wifi_scan/` (réseaux Wi-Fi visibles) | ✅ |
-| `engine/modules/host_discovery/` (cache ARP local) | ✅ |
-| `engine/modules/port_scanner/` (scan actif autorisé) | ✅ |
-| `engine/modules/reporting/` (rapport Markdown/HTML) | ✅ |
-| `cli/ctk.py` | ✅ |
+| `engine/modules/context_detector/` (contexte réseau, portail captif) | ✅ testé sur device |
+| `engine/modules/wifi_scan/` (réseaux Wi-Fi visibles) | ✅ testé sur device |
+| `engine/modules/host_discovery/` (cache ARP local) | ✅ (limitation Android connue, voir plus bas) |
+| `engine/modules/port_scanner/` (scan actif autorisé) | ✅ testé sur device |
+| `engine/modules/reporting/` (rapport Markdown/HTML) | ✅ testé sur device |
+| `cli/ctk.py` | ✅ testé sur device |
 | Tests (77, tous modules) | ✅ |
-| Documentation (architecture, 5 ADR, specs par module) | ✅ |
+| Documentation (architecture, 5 ADR, specs par module, dépannage) | ✅ |
 
 ## Limitations connues (plateforme Android)
 
@@ -39,13 +40,30 @@ le détail.
   disponibles sous le profil `safe` par défaut, par choix architectural
   (voir ADR-0005).
 
+## Préparation à un usage par des tiers
+
+Le code, l'architecture et la documentation sont solides, mais la
+validation terrain reste limitée à un seul appareil (celui de l'auteur).
+Avant de considérer le projet pleinement prêt pour un tiers inconnu sur
+un appareil quelconque :
+- [fait] Valider `port_scanner` sur appareil réel
+- [fait] Compléter le README (étapes d'installation manquantes, section
+  dépannage)
+- [à faire] Test d'installation "à froid" en suivant le README du début
+  à la fin sur un Termux fraîchement installé
+- [à faire] Validation sur un second appareil Android (fabricant/version
+  différents) pour confirmer la portabilité au-delà d'un seul device
+
 ## Installation (Termux)
 
 ```bash
+termux-change-repo
 pkg install python iproute2 nmap curl jq git termux-api
+termux-setup-storage
 pip install -r requirements.txt
 python -m pytest -q
 ```
 
 Voir `README.md` pour l'usage complet, y compris le workflow de
-démonstration client (`--profile authorized_client --authorize <IP>`).
+démonstration client (`--profile authorized_client --authorize <IP>`) et
+la section Dépannage.

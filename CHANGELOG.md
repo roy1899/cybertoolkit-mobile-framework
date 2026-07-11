@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.0.3 — 2026-07-11
+### Added
+- README : étapes d'installation manquantes (`termux-change-repo`,
+  `termux-setup-storage`, mention explicite de l'app **Termux:API**
+  séparée requise depuis F-Droid).
+- Nouvelle section "Dépannage" documentant les problèmes réellement
+  rencontrés en développant ce projet sur appareil réel : mirroir non
+  sélectionné, champs vides sur `context_detector`/`host_discovery`
+  (limitation Android, pas un bug), permission de localisation requise
+  pour `wifi_scan`, commandes `termux-*` silencieuses, comportement
+  `denied` attendu du moteur de politique.
+### Validated
+- `port_scanner` (module actif via nmap) testé pour la première fois sur
+  appareil réel : scan fonctionnel (~25s sur 1024 ports), refus correct
+  sous le profil `safe` par défaut, refus correct d'une cible hors scope
+  sous `home_lab`.
+
 ## 1.0.2 — 2026-07-11
 ### Added
 - `docs/TERMUX_DEV_ENVIRONMENT.md`: diagramme Mermaid des familles de
