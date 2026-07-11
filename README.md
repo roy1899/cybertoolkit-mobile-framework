@@ -123,6 +123,10 @@ python3 -m pytest
 ## Documentation
 
 - `docs/ARCHITECTURE.md` — vue d'ensemble technique
+- `docs/TERMUX_DEV_ENVIRONMENT.md` — familles de commandes Termux et
+  procédure pour un environnement Linux complet (Ubuntu via proot-distro),
+  utile si tu veux faire tourner des outils sans binaire natif Android
+  (ex: Claude Code)
 - `docs/adr/` — décisions d'architecture (ADR)
 - `docs/AUDIT_INITIAL.md` — audit du démarrage de projet
 - `BACKLOG.md`, `ROADMAP.md`, `PROJECT_STATUS.md`, `CHANGELOG.md` — suivi

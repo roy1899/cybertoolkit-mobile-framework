@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.2 — 2026-07-11
+### Added
+- `docs/TERMUX_DEV_ENVIRONMENT.md`: diagramme Mermaid des familles de
+  commandes Termux utilisées sur ce projet, et procédure documentée pour
+  obtenir un environnement Linux complet (Ubuntu via `proot-distro`) —
+  utile pour des outils sans binaire natif `linux-arm64-android` (ex:
+  Claude Code). Documente 3 pièges rencontrés en pratique : erreur
+  "Invalid argument" sur les gros binaires (fix `PROOT_NO_SECCOMP=1`),
+  isolation du système de fichiers (fix `--bind`), et le `npm` d'Ubuntu
+  cassé par défaut (fix : installer Node.js via NodeSource). Inclut
+  aussi la limitation réseau connue de `proot-distro` (pas d'interface
+  physique réelle), pour éviter qu'un futur contributeur ne tente d'y
+  faire tourner `host_discovery`/`context_detector` en pensant contourner
+  les restrictions Android natives.
+
 ## 1.0.1 — 2026-07-11
 ### Added
 - README: badges (licence, Python, tests, plateforme), aperçu visuel du
