@@ -1,6 +1,17 @@
 # Changelog
 
-## 0.9.1 — 2026-07-11
+## 1.0.1 — 2026-07-11
+### Added
+- README: badges (licence, Python, tests, plateforme), aperçu visuel du
+  rapport HTML généré (données fictives, généré directement avec le
+  moteur de rendu du projet — pas un mockup externe).
+
+## 1.0.0 — 2026-07-11
+Première publication propre du dépôt (historique squashé, licence MIT,
+aucune donnée personnelle). Voir `PROJECT_STATUS.md` pour l'état complet
+des fonctionnalités livrées.
+
+## 0.9.1 — 2026-07-11 (historique de développement, pré-v1.0.0)
 ### Fixed
 - **Privacy**: real home network SSID and access point BSSID (used as
   example values while developing/testing `wifi_scan`/`context_detector`)

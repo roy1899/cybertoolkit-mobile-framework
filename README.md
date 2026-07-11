@@ -1,5 +1,10 @@
 # CyberToolkit Mobile Framework
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
+![Tests](https://img.shields.io/badge/tests-77%20passing-brightgreen.svg)
+![Platform](https://img.shields.io/badge/platform-Android%20%2F%20Termux-3DDC84.svg)
+
 Utilitaire open source pour Android + Termux qui transforme un smartphone
 en plateforme mobile d'analyse réseau et cybersécurité —
 **exclusivement sur des réseaux pour lesquels l'opérateur dispose d'une
@@ -11,6 +16,12 @@ environnement Linux standard — voir les `SPEC.md` de chaque module pour
 le détail des limitations plateforme).
 
 Licence : [MIT](LICENSE).
+
+<p align="center">
+  <img src="docs/assets/report_preview.png" alt="Exemple de rapport CyberToolkit (données fictives)" width="360">
+</p>
+
+<p align="center"><em>Rapport HTML généré automatiquement en fin de session — données d'exemple, aucune donnée réelle n'est jamais versionnée dans ce dépôt.</em></p>
 
 ## Principe central : Engine / Execution Policy
 
