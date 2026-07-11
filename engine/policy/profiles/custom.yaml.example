@@ -1,0 +1,12 @@
+# Template for a custom profile. Copy this file to <your_name>.yaml (drop
+# the .example suffix) in this directory, edit it, then select it with
+# `ctk --profile <your_name> ...`. Files ending in .yaml.example are
+# ignored by the loader on purpose so this template is never picked up
+# by accident.
+name: custom
+description: >
+  Copy me, rename me, edit allow_capabilities/authorized_scopes to match
+  your actual, authorized use case.
+allow_capabilities:
+  - passive_local
+authorized_scopes: []

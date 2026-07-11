@@ -1,0 +1,10 @@
+# Default profile. Always the fallback if no --profile is given.
+name: safe
+description: >
+  Passive context detection and local information gathering only. No packets
+  are ever sent to any other host. Safe to run on any network (home, public
+  Wi-Fi, hotel, coworking, tethering) without any authorization step, because
+  it never probes anything other than the device itself.
+allow_capabilities:
+  - passive_local
+authorized_scopes: []

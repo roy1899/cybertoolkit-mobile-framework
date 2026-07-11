@@ -1,0 +1,14 @@
+# For paid/contracted engagements on a client's network.
+name: authorized_client
+description: >
+  For engagements carried out under a signed authorization from the network
+  owner. Deliberately ships with NO pre-approved scopes: every target must
+  be confirmed explicitly per engagement, e.g.
+  `ctk --profile authorized_client --authorize 203.0.113.0/24 run port_scanner --target 203.0.113.10`.
+  Record the engagement's written authorization reference (client name,
+  date, signed document) outside of this repo before scanning.
+allow_capabilities:
+  - passive_local
+  - passive_observe
+  - active_probe
+authorized_scopes: []

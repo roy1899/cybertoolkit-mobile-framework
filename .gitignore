@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+
+# Runtime / scan data - NEVER commit real scan output.
+# Generated reports (network names, MAC/IP addresses, scan results).
+cybertoolkit_report_*.html
+cybertoolkit_report_*.md
+*.session.jsonl
+session.jsonl
+
+# Local session log, wherever it might end up relative to the repo root
+# (the default lives in ~/.cache and is already outside the repo, but
+# this covers CTK_SESSION_LOG overrides pointed at a repo-local path).
+.cache/cybertoolkit/
+
+# Editors / OS cruft
+.DS_Store
+*.swp

@@ -1,0 +1,13 @@
+# For framework development against the operator's own local lab targets.
+name: research
+description: >
+  For testing new modules against local/lab targets (localhost, a personal
+  VM or container lab) while developing the framework itself. Same rule as
+  every other active profile: active_probe still checks target scope.
+allow_capabilities:
+  - passive_local
+  - passive_observe
+  - active_probe
+authorized_scopes:
+  - 127.0.0.0/8
+  - 10.10.10.0/24  # example dev-lab subnet - edit to match your actual lab

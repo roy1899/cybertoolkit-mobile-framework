@@ -1,0 +1,18 @@
+# For scanning the operator's own home network / lab equipment.
+name: home_lab
+description: >
+  For analysing a network and devices the operator owns and controls
+  directly (home network, personal lab). Pre-declares common private
+  ranges as authorized, on the assumption that if you're using this
+  profile you are on your own network.
+allow_capabilities:
+  - passive_local
+  - passive_observe
+  - active_probe
+authorized_scopes:
+  - 192.168.0.0/16
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+# If your home network doesn't fall in these ranges, or you want to be
+# stricter, edit this list to your actual subnet instead of relying on
+# the RFC1918 defaults.

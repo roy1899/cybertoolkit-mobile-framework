@@ -1,0 +1,9 @@
+# For working on the framework's source code without touching real networks.
+name: developer
+description: >
+  For contributors editing/testing the framework itself. All active
+  capabilities are denied on purpose - write unit tests against mocked
+  subprocess calls instead of running real scans while developing.
+allow_capabilities:
+  - passive_local
+authorized_scopes: []
